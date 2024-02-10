@@ -94,6 +94,7 @@ class ri_creditcalc extends CModule {
 	*/
 	public function DoInstall() {
 		$this->InstallEvents();
+        $this->InstallFiles();
 		RegisterModule($this->MODULE_ID);
 
 		return null;
@@ -108,4 +109,12 @@ class ri_creditcalc extends CModule {
 
 		return null;
 	}
+
+    public function InstallFiles(){
+        CopyDirFiles(dirname(__FILE__) . "/components",
+        $_SERVER['DOCUMENT_ROOT'] . "/local/components", true, true);
+        CHTMLEditor::RequestAction('load_components_list');
+
+        return true;
+    }
 }
