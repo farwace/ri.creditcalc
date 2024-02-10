@@ -26,10 +26,15 @@ if($moduleAccess >= "W"){
 
 
     if($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['Update'] <> '' && check_bitrix_sessid()){
-        COption::SetOptionString($moduleId, 'api_url', $_REQUEST['api_url']);
-        COption::SetOptionString($moduleId, 'api_login', $_REQUEST['api_login']);
-        COption::SetOptionString($moduleId, 'api_password', $_REQUEST['api_password']);
-        COption::SetOptionString($moduleId, 'webform_id', $_REQUEST['api_password']);
+        COption::SetOptionString($moduleId, 'api_key', $_REQUEST['api_key']);
+        COption::SetOptionString($moduleId, 'webform_id', $_REQUEST['webform_id']);
+        COption::SetOptionInt($moduleId, 'credit_summ_min', $_REQUEST['credit_summ_min']);
+        COption::SetOptionInt($moduleId, 'credit_summ_max', $_REQUEST['credit_summ_max']);
+        COption::SetOptionInt($moduleId, 'credit_summ_default', $_REQUEST['credit_summ_default']);
+        COption::SetOptionInt($moduleId, 'credit_period_min', $_REQUEST['credit_period_min']);
+        COption::SetOptionInt($moduleId, 'credit_period_max', $_REQUEST['credit_period_max']);
+        COption::SetOptionInt($moduleId, 'credit_period_default', $_REQUEST['credit_period_default']);
+        COption::SetOptionInt($moduleId, 'credit_percent', $_REQUEST['credit_percent']);
     }
 
 
@@ -51,21 +56,21 @@ if($moduleAccess >= "W"){
             <td width="40%">MIN</td>
             <td width="60%">
                 <? $val = COption::GetOptionInt($moduleId, 'credit_summ_min', 1000000) ?>
-                <input type="text" value="<?=$val?>" name="credit_summ_min" step="1000" min="10000" size="50">
+                <input type="text" value="<?=$val?>" name="credit_summ_min" step="100000" min="10000" size="50">
             </td>
         </tr>
         <tr>
             <td width="40%">MAX</td>
             <td width="60%">
-                <? $val = COption::GetOptionInt($moduleId, 'credit_summ_max', 1000000000) ?>
-                <input type="text" value="<?=$val?>" name="credit_summ_max" step="1000" min="10000" size="50">
+                <? $val = COption::GetOptionInt($moduleId, 'credit_summ_max', 30000000) ?>
+                <input type="text" value="<?=$val?>" name="credit_summ_max" step="100000" min="10000" size="50">
             </td>
         </tr>
         <tr>
             <td width="40%">Предустановленное значение</td>
             <td width="60%">
-                <? $val = COption::GetOptionInt($moduleId, 'credit_summ_default', 14500000) ?>
-                <input type="text" value="<?=$val?>" name="credit_summ_default" step="1000" min="10000" size="50">
+                <? $val = COption::GetOptionInt($moduleId, 'credit_summ_default', 3000000) ?>
+                <input type="text" value="<?=$val?>" name="credit_summ_default" step="100000" min="10000" size="50">
             </td>
         </tr>
 
@@ -83,14 +88,14 @@ if($moduleAccess >= "W"){
         <tr>
             <td width="40%">MAX</td>
             <td width="60%">
-                <? $val = COption::GetOptionInt($moduleId, 'credit_period_max', 50) ?>
+                <? $val = COption::GetOptionInt($moduleId, 'credit_period_max', 10) ?>
                 <input type="text" value="<?=$val?>" name="credit_period_max" step="1" min="1" size="50">
             </td>
         </tr>
         <tr>
             <td width="40%">Предустановленное значение</td>
             <td width="60%">
-                <? $val = COption::GetOptionInt($moduleId, 'credit_period_default', 7) ?>
+                <? $val = COption::GetOptionInt($moduleId, 'credit_period_default', 3) ?>
                 <input type="text" value="<?=$val?>" name="credit_period_default" step="1" min="1" size="50">
             </td>
         </tr>
@@ -107,26 +112,12 @@ if($moduleAccess >= "W"){
         </tr>
 
 
-        <tr class="heading"><td colspan="2">Авторизация по API esphere</td></tr>
+        <tr class="heading"><td colspan="2">Авторизация по API DADATA</td></tr>
         <tr>
-            <td width="40%">API URL</td>
+            <td width="40%">API Ключ</td>
             <td width="60%">
-                <? $val = COption::GetOptionString($moduleId, 'api_url', '') ?>
-                <input type="text" value="<?=$val?>" name="api_url" maxlength="255" size="50">
-            </td>
-        </tr>
-        <tr>
-            <td width="40%">Логин</td>
-            <td width="60%">
-                <? $val = COption::GetOptionString($moduleId, 'api_login', '') ?>
-                <input type="text" value="<?=$val?>" name="api_login" maxlength="255" size="50">
-            </td>
-        </tr>
-        <tr>
-            <td width="40%">Пароль</td>
-            <td width="60%">
-                <? $val = COption::GetOptionString($moduleId, 'api_password', '') ?>
-                <input type="password" value="<?=$val?>" name="api_password" maxlength="255" size="50">
+                <? $val = COption::GetOptionString($moduleId, 'api_key', '') ?>
+                <input type="text" value="<?=$val?>" name="api_key" maxlength="255" size="50">
             </td>
         </tr>
 
