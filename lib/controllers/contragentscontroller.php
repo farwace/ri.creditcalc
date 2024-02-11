@@ -24,17 +24,17 @@ class ContragentsController extends Controller
 
     public function getContragentAction()
     {
-        $inn = $this->request->get('inn');
+        $query = $this->request->get('query');
         /** @var ContrAgentsService $contrAgentsService */
         $contrAgentsService = ServiceLocator::getInstance()->get('ri.contragents');
 
         $cache = Application::getInstance()->getManagedCache();
-        $cacheKey = 'getContragent-' . $inn;
+        $cacheKey = 'getContragent-' . $query;
         if($cache->read(3600, $cacheKey)){
             $contragentResult = $cache->get($cacheKey);
         }
         else{
-            $contragentResult = $contrAgentsService->getContrAgent($inn);
+            $contragentResult = $contrAgentsService->getContrAgent($query);
             $cache->set($cacheKey, $contragentResult);
         }
 

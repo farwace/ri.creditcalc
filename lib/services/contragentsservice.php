@@ -9,11 +9,11 @@ use Bitrix\Main\Result;
 class ContrAgentsService{
     const MODULE_ID = 'ri.creditcalc';
 
-    public function getContrAgent($inn){
+    public function getContrAgent($query){
         return $this->sendQuery(
             'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party',
             [
-                'query' => $inn
+                'query' => $query
             ]
         );
     }

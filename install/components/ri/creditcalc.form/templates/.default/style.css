@@ -1,0 +1,56 @@
+.ri {
+  box-sizing: border-box;
+}
+.ri * {
+  box-sizing: border-box;
+}
+.ri__creditcalc {
+  position: relative;
+}
+.ri__creditcalc__title {
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.ri__creditcalc__body {
+  display: flex;
+  gap: 60px;
+}
+.ri__creditcalc__body__ranges {
+  flex: 1;
+}
+.ri__creditcalc__body__info {
+  flex: 1;
+  padding: 40px 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(202, 202, 202, 0.3);
+}
+.ri__ranges__item input {
+  width: 100%;
+}
+.ri__ranges__buttons {
+  margin-top: 30px;
+}
+.ri__info__body__top {
+  margin-bottom: 65px;
+  display: flex;
+  gap: 70px;
+}
+.ri__info__body__top__item__value {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+.ri__info__body__top__item__desc {
+  font-size: 16px;
+  font-weight: 300;
+}
+.ri__info__body__bottom {
+  font-size: 14px;
+  font-weight: 300;
+}
+.ri__btn {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
