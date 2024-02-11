@@ -27,7 +27,6 @@ if($moduleAccess >= "W"){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST' && $_REQUEST['Update'] <> '' && check_bitrix_sessid()){
         COption::SetOptionString($moduleId, 'api_key', $_REQUEST['api_key']);
-        COption::SetOptionString($moduleId, 'webform_id', $_REQUEST['webform_id']);
         COption::SetOptionInt($moduleId, 'credit_summ_min', $_REQUEST['credit_summ_min']);
         COption::SetOptionInt($moduleId, 'credit_summ_max', $_REQUEST['credit_summ_max']);
         COption::SetOptionInt($moduleId, 'credit_summ_default', $_REQUEST['credit_summ_default']);
@@ -35,6 +34,12 @@ if($moduleAccess >= "W"){
         COption::SetOptionInt($moduleId, 'credit_period_max', $_REQUEST['credit_period_max']);
         COption::SetOptionInt($moduleId, 'credit_period_default', $_REQUEST['credit_period_default']);
         COption::SetOptionInt($moduleId, 'credit_percent', $_REQUEST['credit_percent']);
+        COption::SetOptionString($moduleId, 'iblock_id', $_REQUEST['iblock_id']);
+        COption::SetOptionString($moduleId, 'phone_id', $_REQUEST['phone_id']);
+        COption::SetOptionString($moduleId, 'company_id', $_REQUEST['company_id']);
+        COption::SetOptionString($moduleId, 'inn_id', $_REQUEST['inn_id']);
+        COption::SetOptionString($moduleId, 'period_id', $_REQUEST['period_id']);
+        COption::SetOptionString($moduleId, 'summ_id', $_REQUEST['summ_id']);
     }
 
 
@@ -124,12 +129,49 @@ if($moduleAccess >= "W"){
 
         <tr class="heading"><td colspan="2">Хранение результатов</td></tr>
         <tr>
-            <td width="40%">ID WEB-формы</td>
+            <td width="40%">ID Инфоблока</td>
             <td width="60%">
-                <? $val = COption::GetOptionString($moduleId, 'webform_id', '') ?>
-                <input type="text" value="<?=$val?>" name="webform_id" maxlength="255" size="50">
+                <? $val = COption::GetOptionString($moduleId, 'iblock_id', '') ?>
+                <input type="text" value="<?=$val?>" name="iblock_id" maxlength="255" size="50">
             </td>
         </tr>
+        <tr>
+            <td width="40%">ID Свойства "Телефон"</td>
+            <td width="60%">
+                <? $val = COption::GetOptionString($moduleId, 'phone_id', '') ?>
+                <input type="text" value="<?=$val?>" name="phone_id" maxlength="255" size="50">
+            </td>
+        </tr>
+        <tr>
+            <td width="40%">ID Свойства "Компания"</td>
+            <td width="60%">
+                <? $val = COption::GetOptionString($moduleId, 'company_id', '') ?>
+                <input type="text" value="<?=$val?>" name="company_id" maxlength="255" size="50">
+            </td>
+        </tr>
+        <tr>
+            <td width="40%">ID Свойства "ИНН"</td>
+            <td width="60%">
+                <? $val = COption::GetOptionString($moduleId, 'inn_id', '') ?>
+                <input type="text" value="<?=$val?>" name="inn_id" maxlength="255" size="50">
+            </td>
+        </tr>
+        <tr>
+            <td width="40%">ID Свойства "Срок"</td>
+            <td width="60%">
+                <? $val = COption::GetOptionString($moduleId, 'period_id', '') ?>
+                <input type="text" value="<?=$val?>" name="period_id" maxlength="255" size="50">
+            </td>
+        </tr>
+        <tr>
+            <td width="40%">ID Свойства "Сумма"</td>
+            <td width="60%">
+                <? $val = COption::GetOptionString($moduleId, 'summ_id', '') ?>
+                <input type="text" value="<?=$val?>" name="summ_id" maxlength="255" size="50">
+            </td>
+        </tr>
+
+
 
         <? $tabControl->BeginNextTab(); ?>
         <? require_once($_SERVER['DOCUMENT_ROOT']. '/bitrix/modules/main/admin/group_rights.php');?>
